@@ -1,12 +1,11 @@
-/**
- * Class Documental
- */
 package uni1a;
+import java.util.ArrayList;
 
 // Subclase Documental que extiende de ContenidoAudiovisual
 public class Documental extends ContenidoAudiovisual {
     private String tema;
-
+ // Lista de investigadores (RELACIÓN DE AGREGACIÓN)
+    private ArrayList<Investigador> investigadores = new ArrayList<>();
     public Documental(String titulo, int duracionEnMinutos, String genero, String tema) {
         super(titulo, duracionEnMinutos, genero);
         this.tema = tema;
@@ -20,6 +19,9 @@ public class Documental extends ContenidoAudiovisual {
         this.tema = tema;
     }
     
+    public void agregarInvestigador(Investigador investigador) {
+        investigadores.add(investigador);
+        }
     @Override
     public void mostrarDetalles() {
         System.out.println("Detalles de la película:");
@@ -28,6 +30,10 @@ public class Documental extends ContenidoAudiovisual {
         System.out.println("Duración en minutos: " + getDuracionEnMinutos());
         System.out.println("Género: " + getGenero());
         System.out.println("Tema: " + this.tema);
+        System.out.println("Investigadores:");
+        for (Investigador inv : investigadores) {
+        inv.mostrarDetalles();
+        }
         System.out.println();
     }
 }
